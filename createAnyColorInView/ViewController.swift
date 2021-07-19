@@ -11,9 +11,9 @@ class ViewController: UIViewController {
 
     @IBOutlet private var colorChangeView: UIView!
     
-    @IBOutlet private var redColorNumberLabel: UILabel!
-    @IBOutlet private var greenColorNumberLabel: UILabel!
-    @IBOutlet private var blueColorNumberLabel: UILabel!
+    @IBOutlet private var redLabel: UILabel!
+    @IBOutlet private var greenLabel: UILabel!
+    @IBOutlet private var blueLabel: UILabel!
     
     @IBOutlet private var redSlider: UISlider!
     @IBOutlet private var greenSlider: UISlider!
@@ -24,51 +24,69 @@ class ViewController: UIViewController {
         
         colorChangeView.layer.cornerRadius = 15
         
-        redSlider.minimumValue = 0
-        redSlider.maximumValue = 1
-        redSlider.value = 0
-        redSlider.tintColor = .red
-        
-        greenSlider.minimumValue = 0
-        greenSlider.maximumValue = 1
-        greenSlider.value = 0
-        greenSlider.tintColor = .green
-        
-        blueSlider.minimumValue = 0
-        blueSlider.maximumValue = 1
-        blueSlider.value = 0
-        blueSlider.tintColor = .systemBlue
-        
-        redColorNumberLabel.text = String(format: "%.2f", redSlider.value)
-        greenColorNumberLabel.text = String(format: "%.2f", greenSlider.value)
-        blueColorNumberLabel.text = String(format: "%.2f", blueSlider.value)
+        //Code was deleted
+        /*
+        redLabel.text = String(format: "%.2f", redSlider.value)
+        greenLabel.text = String(format: "%.2f", greenSlider.value)
+        blueLabel.text = String(format: "%.2f", blueSlider.value)
+        */
+ 
+        setColor()
+        setValue(from: redLabel, greenLabel, blueLabel)
     }
 
-    @IBAction private func redSliderAction() {
-        redColorNumberLabel.text = String(format: "%.2f", redSlider.value)
-        display()
+    @IBAction func setSlider(_ sender: UISlider) {
+        setColor()
+       
+        switch sender.tag {
+        case 0: redLabel.text = string(from: sender)
+        case 1: greenLabel.text = string(from: sender)
+        case 2: blueLabel.text = string(from: sender)
+        default: break
+        }
     }
     
+    //Code was deleted
+    /*
+    @IBAction private func redSliderAction() {
+        redLabel.text = string(from: redSlider)
+        setColor()
+    }
     
     @IBAction private func greenSliderAction() {
-        greenColorNumberLabel.text = String(format: "%.2f", greenSlider.value)
-        display()
+        greenLabel.text = string(from: greenSlider)
+        setColor()
     }
-    
     
     @IBAction private func blueSliderAction() {
-        blueColorNumberLabel.text = String(format: "%.2f", blueSlider.value)
-        display()
+        blueLabel.text = string(from: blueSlider)
+        setColor()
+    }
+     */
+    
+ 
+    private func setColor() {
+        colorChangeView.backgroundColor = UIColor(
+            red: CGFloat(redSlider.value),
+            green: CGFloat(greenSlider.value),
+            blue: CGFloat(blueSlider.value),
+            alpha: 1
+        )
     }
     
-    private func display() {
-        
-        let red = CGFloat(redSlider.value)
-        let green = CGFloat(greenSlider.value)
-        let blue = CGFloat(blueSlider.value)
-        
-        colorChangeView.backgroundColor = UIColor(red: red, green: green, blue: blue, alpha: 1)
-        
+    private func setValue(from labels: UILabel...) {
+        labels.forEach { label in
+            switch label.tag {
+            case 0: redLabel.text = string(from: redSlider)
+            case 1: greenLabel.text = string(from: greenSlider)
+            case 2: blueLabel.text = string(from: blueSlider)
+            default: break
+            }
+        }
+    }
+    
+    private func string(from slider: UISlider) -> String {
+        String(format: "%.2f", slider.value)
     }
     
 }
