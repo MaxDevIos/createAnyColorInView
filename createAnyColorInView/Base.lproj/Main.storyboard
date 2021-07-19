@@ -119,7 +119,7 @@
                     <connections>
                         <outlet property="blueLabel" destination="bsg-4P-u7b" id="Nbb-n6-hff"/>
                         <outlet property="blueSlider" destination="j5c-tm-1yd" id="Kvv-ft-pFB"/>
-                        <outlet property="colorChangeView" destination="nEm-zs-NsY" id="y28-iN-qgz"/>
+                        <outlet property="colorView" destination="nEm-zs-NsY" id="y28-iN-qgz"/>
                         <outlet property="greenLabel" destination="3Oc-NP-vv9" id="zgB-h3-LBN"/>
                         <outlet property="greenSlider" destination="jEk-HJ-WY9" id="k9v-XV-upP"/>
                         <outlet property="redLabel" destination="AeD-2l-5p4" id="dSR-L4-BbF"/>

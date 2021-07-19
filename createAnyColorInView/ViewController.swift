@@ -9,7 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet private var colorChangeView: UIView!
+    @IBOutlet private var colorView: UIView!
     
     @IBOutlet private var redLabel: UILabel!
     @IBOutlet private var greenLabel: UILabel!
@@ -22,7 +22,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        colorChangeView.layer.cornerRadius = 15
+        colorView.layer.cornerRadius = 15
         
         //Code was deleted
         /*
@@ -32,7 +32,7 @@ class ViewController: UIViewController {
         */
  
         setColor()
-        setValue(from: redLabel, greenLabel, blueLabel)
+        setValue(to: redLabel, greenLabel, blueLabel)
     }
 
     @IBAction func setSlider(_ sender: UISlider) {
@@ -66,7 +66,7 @@ class ViewController: UIViewController {
     
  
     private func setColor() {
-        colorChangeView.backgroundColor = UIColor(
+        colorView.backgroundColor = UIColor(
             red: CGFloat(redSlider.value),
             green: CGFloat(greenSlider.value),
             blue: CGFloat(blueSlider.value),
@@ -74,7 +74,7 @@ class ViewController: UIViewController {
         )
     }
     
-    private func setValue(from labels: UILabel...) {
+    private func setValue(to labels: UILabel...) {
         labels.forEach { label in
             switch label.tag {
             case 0: redLabel.text = string(from: redSlider)
