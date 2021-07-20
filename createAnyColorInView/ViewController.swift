@@ -32,11 +32,34 @@ class ViewController: UIViewController {
         */
  
         setColor()
+        
         setValue(to: redLabel, greenLabel, blueLabel)
     }
 
     @IBAction func setSlider(_ sender: UISlider) {
         setColor()
+        
+        switch sender.tag {
+        case 0: colorView.backgroundColor = UIColor(
+            red: CGFloat(sender.value),
+            green: CGFloat(greenSlider.value),
+            blue: CGFloat(blueSlider.value),
+            alpha: 1
+        )
+        case 1: colorView.backgroundColor = UIColor(
+            red: CGFloat(redSlider.value),
+            green: CGFloat(sender.value),
+            blue: CGFloat(blueSlider.value),
+            alpha: 1
+        )
+        case 2: colorView.backgroundColor = UIColor(
+            red: CGFloat(redSlider.value),
+            green: CGFloat(greenSlider.value),
+            blue: CGFloat(sender.value),
+            alpha: 1
+        )
+        default: break
+        }
        
         switch sender.tag {
         case 0: redLabel.text = string(from: sender)
